@@ -59,3 +59,10 @@ typings/
 
 # package-lock.json file
 package-lock.json
+
+# Data
+data/
+dist/
+
+# OS files
+.DS_Store
