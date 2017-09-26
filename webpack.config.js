@@ -11,12 +11,12 @@ const extractText = new ExtractTextPlugin({
   disable: false,
   allChunks: true,
 });
-
+/*
 const bootstraprcCustomLocation = './.bootstraprc';
 const bootsrapConfig = 'bootstrap-loader/lib/bootstrap.loader?extractStyles' +
   `&configFilePath=${__dirname}/${bootstraprcCustomLocation}` +
   '!bootstrap-loader/no-op.js';
-
+*/
 module.exports = [
   {
     name: 'server',
@@ -27,19 +27,21 @@ module.exports = [
     },
     output: {
       path: path.join(__dirname, 'dist'),
-      filename: 'server.bundle.js',
+      //filename: 'server.bundle.js', //Atamanskiy (replaced by "filename:'[name].js'")
+      filename:'[name].js',
       libraryTarget: 'commonjs2',
     },
     module: {
       rules: [
         {
           test: /\.js$/,
-          exclude: /node_modules/,
           use: 'babel-loader',
+          exclude: /node_modules/,
         },
       ],
     },
   },
+  /*
   {
     name: 'client',
     entry: {
@@ -104,4 +106,5 @@ module.exports = [
       new webpack.NamedModulesPlugin(),
     ],
   },
+  */
 ];
