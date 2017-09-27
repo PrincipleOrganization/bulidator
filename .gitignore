@@ -60,6 +60,9 @@ typings/
 # package-lock.json file
 package-lock.json
 
+# database file
+db.json
+
 # Data
 data/
 dist/

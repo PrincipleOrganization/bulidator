@@ -27,7 +27,7 @@ module.exports = [
     },
     output: {
       path: path.join(__dirname, 'dist'),
-      //filename: 'server.bundle.js', //Atamanskiy (replaced by "filename:'[name].js'")
+      //Atamanskiy: filename: "server.bundle.js" replaced by "filename:'[name].js'"
       filename:'[name].js',
       libraryTarget: 'commonjs2',
     },
