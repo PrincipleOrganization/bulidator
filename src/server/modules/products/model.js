@@ -12,7 +12,7 @@ export default class Product {
     this.slug = slug(args.name);
   }
 
-  static getClients() {
+  static getProducts() {
     db.read();
     return db.get(TABLE).value();
   }
@@ -32,7 +32,7 @@ export default class Product {
 
     const productDb = db.get(TABLE).find({ name: args.name }).value();
     if (productDb) {
-      return { client: {}, messages: ['Product with this name exists'] };
+      return { product: {}, messages: ['Product with this name exists'] };
     }
     let product = new Product({ ...args });
     const messages = product.validate();
@@ -51,7 +51,7 @@ export default class Product {
       const messages = product.validate();
       if (messages.length === 0) {
         return {
-          client: productDb.assign({ ...product.toJSON() }).write(),
+          product: productDb.assign({ ...product.toJSON() }).write(),
           messages,
         };
       }

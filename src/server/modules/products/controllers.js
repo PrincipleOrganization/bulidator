@@ -2,7 +2,7 @@ import Product from './model';
 
 export const all = (req, res) => {
   try {
-    res.status(200).json(Product.getClients());
+    res.status(200).json(Product.getProducts());
   } catch (e) {
     res.status(400).json(e.toString());
   }
