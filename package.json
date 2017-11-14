@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/PrincipleOrganization/bulidator#readme",
   "dependencies": {
+    "axios": "^0.17.1",
     "body-parser": "^1.18.1",
     "compression": "^1.7.0",
     "cors": "^2.8.4",
