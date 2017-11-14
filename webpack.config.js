@@ -11,12 +11,14 @@ const extractText = new ExtractTextPlugin({
   disable: false,
   allChunks: true,
 });
+
 /*
 const bootstraprcCustomLocation = './.bootstraprc';
 const bootsrapConfig = 'bootstrap-loader/lib/bootstrap.loader?extractStyles' +
   `&configFilePath=${__dirname}/${bootstraprcCustomLocation}` +
   '!bootstrap-loader/no-op.js';
-*/
+
+
 module.exports = [
   {
     name: 'server',
@@ -41,7 +43,8 @@ module.exports = [
       ],
     },
   },
-  /*
+*/
+/*
   {
     name: 'client',
     entry: {
@@ -106,5 +109,33 @@ module.exports = [
       new webpack.NamedModulesPlugin(),
     ],
   },
+  ];
   */
-];
+
+//Atamanskiy testing devServer
+module.exports =
+{
+    entry: './src/client/index.js',
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'app.bundle.js'
+    },
+    module:{
+      rules:[
+        {test: /\.css$/, use:['style-loader','css-loader']},
+        {test: /\.js$/, exclude: /node_modules/, use:['babel-loader']},
+        {test: /\.jsx?$/, exclude: /node_modules/, use:['babel-loader']}
+      ]
+    },
+    devServer:{
+          contentBase: path.join(__dirname, 'dist'),
+          compress: true,
+          port: 8080,
+          noInfo: true,
+          open: true
+    },
+    plugins: [new HtmlWebpackPlugin({
+      title: 'Bulidator',
+      template: './src/client/index.html',
+    })]
+}
